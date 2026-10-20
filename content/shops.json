@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sample-sumibi",
+    "name": "サンプル焼肉 炭火",
+    "prefecture": "東京都",
+    "city": "サンプル市",
+    "description": "開発用の架空店舗です。炭火焼肉の検索例に使えます。",
+    "specialtyCuts": ["カルビ", "ハラミ"],
+    "tags": ["charcoal", "wagyu"],
+    "checkedAt": "2026-10-20",
+    "isSample": true,
+    "photos": []
+  },
+  {
+    "id": "sample-horumon",
+    "name": "サンプル焼肉 ホルモン",
+    "prefecture": "大阪府",
+    "city": "サンプル市",
+    "description": "開発用の架空店舗です。ホルモンの検索例に使えます。",
+    "specialtyCuts": ["シマチョウ", "ミノ"],
+    "tags": ["horumon"],
+    "checkedAt": "2026-10-20",
+    "isSample": true,
+    "photos": []
+  },
+  {
+    "id": "sample-table",
+    "name": "サンプル焼肉 テーブル",
+    "prefecture": "福岡県",
+    "city": "サンプル市",
+    "description": "開発用の架空店舗です。食べ放題の検索例に使えます。",
+    "specialtyCuts": ["タン", "ロース"],
+    "tags": ["all-you-can-eat"],
+    "checkedAt": "2026-10-20",
+    "isSample": true,
+    "photos": []
+  }
+]
