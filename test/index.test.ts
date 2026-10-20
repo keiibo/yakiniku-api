@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
+import type { Shop } from '../src/catalog'
 import { createApp } from '../src/index'
 import { fixtures } from './fixtures'
 
 const app = createApp(fixtures)
-import type { Shop } from '../src/catalog'
 
 describe('Yakiniku API', () => {
   it('describes the sample dataset', async () => {
@@ -104,6 +104,38 @@ describe('Yakiniku API', () => {
     expect(await (await app.request('/shops?pretty')).text()).toContain(
       '\n  "shops"',
     )
+  })
+  it.each([
+    '/shops',
+    '/shops?pretty',
+    '/shops/sample-sumibi',
+    '/shops/sample-sumibi?pretty',
+  ])('declares UTF-8 and preserves Japanese bytes for %s', async (path) => {
+    const response = await app.request(path)
+    expect(response.headers.get('content-type')).toBe(
+      'application/json; charset=UTF-8',
+    )
+    const text = new TextDecoder('utf-8', { fatal: true }).decode(
+      await response.arrayBuffer(),
+    )
+    expect(text).toContain('サンプル焼肉')
+    expect(text).toContain('東京都')
+    expect(text).not.toContain('\uFFFD')
+    expect(() => JSON.parse(text)).not.toThrow()
+  })
+  it.each(['/shops?page=0', '/shops/missing', '/missing?pretty'])(
+    'declares UTF-8 for JSON errors at %s',
+    async (path) => {
+      const response = await app.request(path)
+      expect(response.headers.get('content-type')).toBe(
+        'application/json; charset=UTF-8',
+      )
+    },
+  )
+  it('does not add a JSON content type to an empty preflight response', async () => {
+    const response = await app.request('/shops', { method: 'OPTIONS' })
+    expect(response.status).toBe(204)
+    expect(response.headers.get('content-type')).toBeNull()
   })
   it('allows browser read requests', async () => {
     const response = await app.request('/shops', {

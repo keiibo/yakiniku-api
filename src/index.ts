@@ -8,6 +8,13 @@ import { filterSchema, filterShops, listQuerySchema, listShops } from './search'
 /** Build the read-only API; inject a catalog to test isolated datasets. */
 export function createApp(data: Catalog = catalog) {
   const app = new Hono()
+  /** Declare UTF-8 after response formatting so browsers decode Japanese JSON correctly. */
+  app.use('*', async (c, next) => {
+    await next()
+    if (c.res.headers.get('Content-Type')?.startsWith('application/json')) {
+      c.header('Content-Type', 'application/json; charset=UTF-8')
+    }
+  })
   app.use('*', secureHeaders())
   app.use('*', cors({ origin: '*', allowMethods: ['GET', 'HEAD', 'OPTIONS'] }))
   app.use('*', prettyJSON())
