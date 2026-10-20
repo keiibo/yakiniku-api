@@ -6,7 +6,19 @@
 初版はREST APIです。
 **収録済みの3店舗はすべて架空のサンプルです。**
 店舗ごとの `isSample` で区別でき、`isSample=false` で実在店舗だけに絞れます。
-現時点では実在店舗と写真は未収録で、公開APIのURLも未発行です。
+現時点では実在店舗と写真は未収録です。
+
+## 公開API
+
+Cloudflare Workersで公開しています。
+
+- ベースURL：https://yakiniku-api.keichi.workers.dev
+- [店舗一覧](https://yakiniku-api.keichi.workers.dev/shops?pretty)
+- [ランダム取得](https://yakiniku-api.keichi.workers.dev/shops/random?pretty)
+
+```sh
+curl 'https://yakiniku-api.keichi.workers.dev/shops?pretty'
+```
 
 ## 起動
 
@@ -145,7 +157,7 @@ npm run deploy
 ```
 
 公開前に `wrangler.jsonc` のサービス名と公開対象データを確認してください。
-公開先URLはデプロイ時に発行されます。
+このリポジトリの公開先は、上記のWorkers URLです。
 GraphQL、MCP、画像ファイルのアップロード機能は未実装です。
 
 ## ライセンスと謝辞
