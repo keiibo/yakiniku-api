@@ -1,0 +1,112 @@
+name: 店舗と写真を投稿する
+description: 焼肉店の情報と、ご自身で撮影した写真を一緒に投稿します。
+title: "[店舗投稿] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        写真付きの投稿ありがとうございます。GitHubアカウントだけで投稿できます。
+        投稿後に管理者が内容を確認し、Pull RequestでAPIに反映します。
+        **添付した写真はアップロード時点でGitHubに送信されます。**
+        顔やレシートなどの個人情報が写っていないか確認し、位置情報などのEXIFを除去してから添付してください。
+        ご自身で撮影し、CC BY 4.0で公開できる写真を使用してください。
+        メールアドレス、本名、個人の住所の入力は不要です。
+  - type: input
+    id: shop-name
+    attributes:
+      label: 店舗名
+      description: 支店名がある場合は含めてください。
+      placeholder: 焼肉○○ △△店
+    validations:
+      required: true
+  - type: input
+    id: prefecture
+    attributes:
+      label: 都道府県
+      placeholder: 東京都
+    validations:
+      required: true
+  - type: input
+    id: city
+    attributes:
+      label: 市区町村
+      placeholder: 渋谷区
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: 店舗情報の確認元URL
+      description: 店舗の公式サイトなど、店舗名と所在地を確認できるHTTPSのURLを記入してください。
+      placeholder: https://example.com/shop
+    validations:
+      required: true
+  - type: input
+    id: checked-at
+    attributes:
+      label: 情報を確認した日
+      description: YYYY-MM-DD形式で記入してください。
+      placeholder: '2026-10-21'
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: お店の紹介
+      description: ご自身の言葉で書いてください。第三者の紹介文の転載は避け、確認できた事実を記載してください。
+      placeholder: 炭火で焼く焼肉店です。
+    validations:
+      required: true
+  - type: textarea
+    id: specialties
+    attributes:
+      label: 提供部位や特徴（任意）
+      description: 確認できた提供部位、和牛、ホルモン、炭火、食べ放題などを記入してください。不明なら空欄で構いません。
+      placeholder: カルビ、ハラミ。炭火。
+  - type: textarea
+    id: photos
+    attributes:
+      label: 写真の添付
+      description: |
+        この欄へ写真をドラッグするか、欄の下のファイル選択から添付してください。
+        JPEG、PNG、WebPの静止画を1〜5枚、1枚10 MB以下でお願いします。
+        アップロードが終わり、プレビューに写真が表示されることを確認してください。
+        写真を使わずに店舗情報だけを訂正する場合は「訂正と不具合の報告」を選んでください。
+      placeholder: ここに写真を添付してください。
+    validations:
+      required: true
+  - type: textarea
+    id: photo-descriptions
+    attributes:
+      label: 写真ごとの説明
+      description: 添付順に、写っている料理や店内の様子を説明してください。分かれば撮影日も添えてください。
+      placeholder: '1枚目：網の上で焼くカルビ。2026年10月撮影。'
+    validations:
+      required: true
+  - type: input
+    id: photographer
+    attributes:
+      label: 撮影者の公開名
+      description: APIのクレジットに表示します。GitHubユーザー名やハンドルネームで構いません。写真は撮影者ごとに分けて投稿してください。
+      placeholder: keichi
+    validations:
+      required: true
+  - type: input
+    id: photographer-url
+    attributes:
+      label: 撮影者の公開プロフィールURL（任意）
+      description: クレジットからリンクしてよいHTTPSのURLがあれば記入してください。
+      placeholder: https://github.com/your-name
+  - type: checkboxes
+    id: permissions
+    attributes:
+      label: 写真と公開内容の確認
+      options:
+        - label: 添付写真は自分で撮影したもので、公開する権利があります。
+          required: true
+        - label: 写真と自分で書いた説明文をCC BY 4.0で提供します。撮影者名の表示を条件として、第三者による再利用、加工、商用利用を認めます。
+          required: true
+        - label: 位置情報などのEXIFを除去し、無断で公開できない人物や個人情報が写っていないことを確認しました。
+          required: true
+        - label: 写真、公開名、投稿内容がGitHubで公開され、採用後はAPIでも配信されることを確認しました。
+          required: true

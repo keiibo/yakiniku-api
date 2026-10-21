@@ -1,0 +1,36 @@
+name: 訂正と不具合の報告
+description: 店舗情報や写真の訂正、削除依頼、APIの不具合を報告します。
+title: "[報告] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        このフォームの内容は公開されます。
+        個人情報、メールアドレス、認証情報、権利証明書は添付しないでください。
+        写真の削除依頼では、問題の写真を再添付せず対象URLを記入してください。
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 報告の種類
+      options:
+        - 店舗情報の訂正
+        - 写真や撮影者情報の訂正
+        - 写真の削除依頼
+        - APIの不具合
+        - その他の提案
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: 対象URLまたは店舗ID
+      description: 特定の対象がない提案の場合は「なし」と記入してください。
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 報告内容
+      description: 訂正後の内容と確認元、または再現手順と期待した結果を記入してください。
+    validations:
+      required: true

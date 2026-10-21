@@ -20,6 +20,17 @@ Cloudflare Workersで公開しています。
 curl 'https://yakiniku-api.keichi.workers.dev/shops?pretty'
 ```
 
+## 店舗と写真を投稿する
+
+**GitHubの Issues → New issue から、写真付きで投稿できます。**
+「店舗と写真を投稿する」または「既存店舗に写真を追加する」を選び、フォームの写真欄へ画像を添付してください。
+GitHubアカウントがあれば参加でき、開発環境の準備は不要です。
+新しい店舗の投稿にも、ご自身で撮影した写真を1枚以上添えてください。
+
+写真付きIssueを管理者が確認し、PRのレビューを経てAPIに反映します。
+写真には撮影者の公開名を記録します。メールアドレスの入力は不要です。
+[写真付き投稿の手順](CONTRIBUTING.md#写真付きで投稿する)と[PRでの参加方法](CONTRIBUTING.md#pull-requestで参加する)を用意しています。
+
 ## 起動
 
 Node.js 22系（22.12以降）とnpmを推奨します。
@@ -171,7 +182,8 @@ npm run deploy
 このリポジトリの公開先は、上記のWorkers URLです。
 写真ファイルは `npm run photo:add` で登録し、デプロイ時に公開します。
 手順は [写真の登録方法](CONTRIBUTING.md#写真を追加する) を参照してください。
-GraphQL、MCP、ブラウザからの直接アップロードは未実装です。
+ブラウザからの投稿はGitHubのIssueフォームで受け付けます。
+GraphQL、MCP、APIへの直接アップロードは未実装です。
 
 ## ライセンスと謝辞
 

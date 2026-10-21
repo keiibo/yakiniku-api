@@ -1,0 +1,68 @@
+name: 既存店舗に写真を追加する
+description: 収録済みの店舗に、ご自身で撮影した写真を追加します。
+title: "[写真投稿] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        写真付きの投稿ありがとうございます。GitHubアカウントだけで投稿できます。
+        投稿後に管理者が内容を確認し、Pull RequestでAPIに反映します。
+        **添付した写真はアップロード時点でGitHubに送信されます。**
+        顔やレシートなどの個人情報が写っていないか確認し、位置情報などのEXIFを除去してから添付してください。
+        ご自身で撮影し、CC BY 4.0で公開できる写真を使用してください。
+        メールアドレス、本名、個人の住所の入力は不要です。
+  - type: input
+    id: shop
+    attributes:
+      label: 対象店舗のAPI URLまたは店舗ID
+      description: 店舗詳細APIのURLを貼り付けるか、店舗IDを記入してください。
+      placeholder: https://yakiniku-api.keichi.workers.dev/shops/your-shop-id
+    validations:
+      required: true
+  - type: textarea
+    id: photos
+    attributes:
+      label: 写真の添付
+      description: |
+        この欄へ写真をドラッグするか、欄の下のファイル選択から添付してください。
+        JPEG、PNG、WebPの静止画を1〜5枚、1枚10 MB以下でお願いします。
+        アップロードが終わり、プレビューに写真が表示されることを確認してください。
+        写真を使わずに店舗情報だけを訂正する場合は「訂正と不具合の報告」を選んでください。
+      placeholder: ここに写真を添付してください。
+    validations:
+      required: true
+  - type: textarea
+    id: photo-descriptions
+    attributes:
+      label: 写真ごとの説明
+      description: 添付順に、写っている料理や店内の様子を説明してください。分かれば撮影日も添えてください。
+      placeholder: '1枚目：網の上で焼くカルビ。2026年10月撮影。'
+    validations:
+      required: true
+  - type: input
+    id: photographer
+    attributes:
+      label: 撮影者の公開名
+      description: APIのクレジットに表示します。GitHubユーザー名やハンドルネームで構いません。写真は撮影者ごとに分けて投稿してください。
+      placeholder: keichi
+    validations:
+      required: true
+  - type: input
+    id: photographer-url
+    attributes:
+      label: 撮影者の公開プロフィールURL（任意）
+      description: クレジットからリンクしてよいHTTPSのURLがあれば記入してください。
+      placeholder: https://github.com/your-name
+  - type: checkboxes
+    id: permissions
+    attributes:
+      label: 写真と公開内容の確認
+      options:
+        - label: 添付写真は自分で撮影したもので、公開する権利があります。
+          required: true
+        - label: 写真と自分で書いた説明文をCC BY 4.0で提供します。撮影者名の表示を条件として、第三者による再利用、加工、商用利用を認めます。
+          required: true
+        - label: 位置情報などのEXIFを除去し、無断で公開できない人物や個人情報が写っていないことを確認しました。
+          required: true
+        - label: 写真、公開名、投稿内容がGitHubで公開され、採用後はAPIでも配信されることを確認しました。
+          required: true
