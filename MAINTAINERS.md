@@ -4,7 +4,7 @@
 
 `.github/ISSUE_TEMPLATE/` に、店舗と写真の投稿、既存店舗への写真追加、訂正と不具合の3つのフォームを用意しています。
 GitHubの公開リポジトリでIssuesを有効にし、これらのファイルをデフォルトブランチにpushすると、New issueの選択画面に表示されます。
-現時点ではローカルリポジトリのみで、GitHubの投稿受付はまだ開始していません。
+公開リポジトリは [keiibo/yakiniku-api](https://github.com/keiibo/yakiniku-api)、受付窓口は [投稿フォームの一覧](https://github.com/keiibo/yakiniku-api/issues/new/choose) です。
 
 写真欄は添付に対応する通常のtextareaです。
 `render` を指定すると添付用のUIが使えなくなるため、指定しません。

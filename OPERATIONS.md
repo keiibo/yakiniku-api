@@ -43,7 +43,8 @@ HTTP 429を受け取ったクライアントは60秒以上待って再試行し�
 静的ファイルとOPTIONSはAPIの60回制限の対象外です。
 
 外部からの定期的な死活監視と通知は未設定です。
-GitHub ActionsのCIも、GitHubリポジトリにpushするまでは実行されません。
+GitHub ActionsのCIはpushとPull Requestで実行します。
+CIの成功だけでは本番へデプロイされません。
 
 ## 公開とロールバック
 

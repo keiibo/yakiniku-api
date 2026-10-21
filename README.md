@@ -22,7 +22,12 @@ curl 'https://yakiniku-api.keichi.workers.dev/shops?pretty'
 
 ## 店舗と写真を投稿する
 
-**GitHubの Issues → New issue から、写真付きで投稿できます。**
+次のフォームから、写真付きで投稿できます。
+
+- [店舗と写真を投稿する](https://github.com/keiibo/yakiniku-api/issues/new?template=01-shop.yml)
+- [既存店舗に写真を追加する](https://github.com/keiibo/yakiniku-api/issues/new?template=02-photo.yml)
+- [訂正や削除依頼、不具合を報告する](https://github.com/keiibo/yakiniku-api/issues/new?template=03-correction.yml)
+
 「店舗と写真を投稿する」または「既存店舗に写真を追加する」を選び、フォームの写真欄へ画像を添付してください。
 GitHubアカウントがあれば参加でき、開発環境の準備は不要です。
 新しい店舗の投稿にも、ご自身で撮影した写真を1枚以上添えてください。
@@ -154,7 +159,7 @@ npm run check
 ```
 
 `check` はlint、format確認、単体テスト、型チェック、Workersのビルドを実行します。
-GitHubへ公開した際に同じ検証を実行するActionsワークフローを含みます。
+GitHub ActionsでもpushとPull Requestに対して同じ検証を実行します。
 `build` は `dist/` に成果物を作るdry runで、外部には公開しません。
 
 | パス | 役割 |

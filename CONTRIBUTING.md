@@ -6,7 +6,7 @@ Gitやプログラミングの知識、Cloudflareのアカウントは不要で�
 
 ## 写真付きで投稿する
 
-GitHubリポジトリの **Issues → New issue** から、目的に合うフォームを選んでください。
+[投稿フォームの一覧](https://github.com/keiibo/yakiniku-api/issues/new/choose)から、目的に合うフォームを選んでください。
 
 | フォーム | 用途 |
 | --- | --- |
