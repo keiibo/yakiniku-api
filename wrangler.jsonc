@@ -2,5 +2,32 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "yakiniku-api",
   "main": "src/index.ts",
-  "compatibility_date": "2026-10-20"
+  "compatibility_date": "2026-10-20",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "none"
+  },
+  "ratelimits": [
+    {
+      "name": "API_RATE_LIMITER",
+      "namespace_id": "2026102101",
+      "simple": {
+        "limit": 60,
+        "period": 60
+      }
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.1,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": false
+    },
+    "redact_query_string": true
+  },
+  "limits": {
+    "cpu_ms": 10
+  },
+  "preview_urls": false
 }

@@ -61,8 +61,10 @@ export const authorSchema = z.strictObject({
   name: textSchema,
   url: httpsUrl.optional(),
 })
+export const localPhotoPattern =
+  /^\/images\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-f0-9]{64}\.webp$/
 export const photoSchema = z.strictObject({
-  url: httpsUrl,
+  url: z.union([httpsUrl, z.string().regex(localPhotoPattern)]),
   authorId: idSchema,
   alt: textSchema,
   width: z.number().int().positive(),
